@@ -3,7 +3,7 @@ using GetUser.Api.Mappers;
 using GetUser.Api.Services;
 using GetUser.Api.UserHttpClient;
 
-var builder = WebApplication.CreateBuilder();
+var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<MapperlyMapper>();
 builder.Services.AddControllers();
@@ -14,6 +14,7 @@ builder.Services.AddAuthClient();
 builder.Services.AddUserClient();
 
 var app = builder.Build();
+app.UseHttpsRedirection();
 app.MapControllers();
 app.Run();
 
