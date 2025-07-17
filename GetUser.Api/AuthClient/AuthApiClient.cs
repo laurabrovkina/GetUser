@@ -9,14 +9,12 @@ namespace GetUser.Api.AuthClient;
 
 public class AuthApiClient : IAuthApiClient
 {
-    private readonly IHttpClientFactory _httpClientFactory;
+    private readonly HttpClient _httpClient;
     private readonly JwtOptions _tokenOptions;
 
-    public AuthApiClient(
-        IHttpClientFactory httpClientFactory,
-        IOptions<JwtOptions> tokenOptions)
+    public AuthApiClient(IOptions<JwtOptions> tokenOptions, HttpClient httpClient)
     {
-        _httpClientFactory = httpClientFactory;
+        _httpClient = httpClient;
         _tokenOptions = tokenOptions.Value;
     }
 
@@ -29,14 +27,13 @@ public class AuthApiClient : IAuthApiClient
             expiresInMins = _tokenOptions.ExpiresInMins
         };
         
-        var client = _httpClientFactory.CreateClient("AuthClient");
         var httpContent = new StringContent(JsonSerializer.Serialize(body), Encoding.UTF8, "application/json");
         var httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, "auth/login")
         {
             Content = httpContent
         };
         
-        var response = await client.SendAsync(httpRequestMessage);
+        var response = await _httpClient.SendAsync(httpRequestMessage);
         response.EnsureSuccessStatusCode();
         var responseJsonString = await response.Content.ReadAsStringAsync();
         
@@ -57,7 +54,7 @@ public static class AuthApiClientExtensions
             services.Configure(configureOptions);
         }
 
-        services.AddHttpClient<IAuthApiClient, AuthApiClient>((sp, config) =>
+        services.AddHttpClient<IAuthApiClient, AuthApiClient>("AuthClient", (sp, config) =>
         {
             var options = sp.GetRequiredService<IOptions<JwtOptions>>().Value;
             config.BaseAddress = new Uri(options.Url);

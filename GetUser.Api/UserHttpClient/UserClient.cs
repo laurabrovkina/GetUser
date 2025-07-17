@@ -4,17 +4,16 @@ namespace GetUser.Api.UserHttpClient;
 
 public class UserClient : IUserClient
 {
-    private readonly IHttpClientFactory _httpClientFactory;
+    private readonly HttpClient _httpClient;
 
-    public UserClient(IHttpClientFactory httpClientFactory)
+    public UserClient(HttpClient httpClient)
     {
-        _httpClientFactory = httpClientFactory;
+        _httpClient = httpClient;
     }
 
     public async Task<User?> GetCurrentAuthUserAsync()
     {
-        var client = _httpClientFactory.CreateClient("UserClient");
-        var user = await client.GetFromJsonAsync<User>("user/me");
+        var user = await _httpClient.GetFromJsonAsync<User>("user/me");
         return user;
     }
 }
