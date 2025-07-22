@@ -16,4 +16,10 @@ public class UserClient : IUserClient
         var user = await _httpClient.GetFromJsonAsync<User>("user/me");
         return user;
     }
+
+    public async Task<UsersResponse?> GetUsersAsync(string parameter)
+    {
+        var users = await _httpClient.GetFromJsonAsync<UsersResponse>($"/users/search?q={parameter}");
+        return users;
+    }
 }

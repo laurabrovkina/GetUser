@@ -1,4 +1,5 @@
-﻿using GetUser.Api.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using GetUser.Api.Models;
 using GetUser.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,6 +21,17 @@ public class UserController : ControllerBase
     {
         var currentUser = await _userService.GetUserAsync();
         return new ObjectResult(currentUser)
+        {
+            StatusCode = 200
+        };
+    }
+    
+    [HttpGet]
+    [Route("users/search")]
+    public async Task<ActionResult<IEnumerable<UserDto>>> GetUsersByParameter([Required][FromQuery] string name)
+    {
+        var users = await _userService.GetUsersAsyncByParameter(name);
+        return new ObjectResult(users)
         {
             StatusCode = 200
         };

@@ -9,7 +9,7 @@ public class UserService : IUserService
     private readonly IUserClient _userClient;
     private readonly MapperlyMapper _mapper;
 
-    public UserService(IUserClient userClient, MapperlyMapper mapper)
+    public UserService(IUserClient userClient)
     {
         _userClient = userClient;
         _mapper = new MapperlyMapper();
@@ -22,5 +22,14 @@ public class UserService : IUserService
         
         var userDto = _mapper.MapToUserDto(user);
         return userDto;
+    }
+
+    public async Task<IEnumerable<UserDto>?> GetUsersAsyncByParameter(string parameter)
+    {
+        var response = await _userClient.GetUsersAsync(parameter);
+        ArgumentNullException.ThrowIfNull(response);
+        
+        var usersDto = _mapper.MapToUserDto(response.Users);
+        return usersDto;
     }
 }

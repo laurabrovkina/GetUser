@@ -7,4 +7,5 @@ namespace GetUser.Api.Mappers;
 public partial class MapperlyMapper
 {
     public partial UserDto MapToUserDto(User user);
+    public partial IEnumerable<UserDto> MapToUserDto(IEnumerable<User> user);
 }
