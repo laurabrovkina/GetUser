@@ -28,7 +28,7 @@ public class UserController : ControllerBase
     }
     
     [HttpGet]
-    [Route("users/search")]
+    [Route("users")]
     public async Task<ActionResult<IEnumerable<UserDto>>> GetAllUsers([FromQuery] GetUsersRequest request)
     {
         var options = new GetUsersOptions
