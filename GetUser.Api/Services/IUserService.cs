@@ -5,5 +5,5 @@ namespace GetUser.Api.Services;
 public interface IUserService
 {
     Task<UserDto> GetUserAsync();
-    Task<IEnumerable<UserDto>?> GetUsersAsyncByParameter(string parameter);
+    Task<IEnumerable<UserDto>?> GetAllAsync(GetUsersOptions options);
 }

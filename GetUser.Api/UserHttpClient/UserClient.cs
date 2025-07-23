@@ -17,9 +17,9 @@ public class UserClient : IUserClient
         return user;
     }
 
-    public async Task<UsersResponse?> GetUsersAsync(string parameter)
+    public async Task<UsersResponse?> GetUsersAsync(GetUsersOptions options)
     {
-        var users = await _httpClient.GetFromJsonAsync<UsersResponse>($"/users/search?q={parameter}");
+        var users = await _httpClient.GetFromJsonAsync<UsersResponse>($"/users/search?q={options.Name}");
         return users;
     }
 }

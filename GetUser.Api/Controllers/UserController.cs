@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using GetUser.Api.Contracts;
 using GetUser.Api.Models;
 using GetUser.Api.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -28,9 +29,13 @@ public class UserController : ControllerBase
     
     [HttpGet]
     [Route("users/search")]
-    public async Task<ActionResult<IEnumerable<UserDto>>> GetUsersByParameter([Required][FromQuery] string name)
+    public async Task<ActionResult<IEnumerable<UserDto>>> GetAllUsers([FromQuery] GetUsersRequest request)
     {
-        var users = await _userService.GetUsersAsyncByParameter(name);
+        var options = new GetUsersOptions
+        {
+            Name = request.Name
+        };
+        var users = await _userService.GetAllAsync(options);
         return new ObjectResult(users)
         {
             StatusCode = 200

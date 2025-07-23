@@ -24,9 +24,9 @@ public class UserService : IUserService
         return userDto;
     }
 
-    public async Task<IEnumerable<UserDto>?> GetUsersAsyncByParameter(string parameter)
+    public async Task<IEnumerable<UserDto>?> GetAllAsync(GetUsersOptions options)
     {
-        var response = await _userClient.GetUsersAsync(parameter);
+        var response = await _userClient.GetUsersAsync(options);
         ArgumentNullException.ThrowIfNull(response);
         
         var usersDto = _mapper.MapToUserDto(response.Users);

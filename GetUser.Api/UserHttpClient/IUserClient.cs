@@ -5,5 +5,5 @@ namespace GetUser.Api.UserHttpClient;
 public interface IUserClient
 {
     Task<User?> GetCurrentAuthUserAsync();
-    Task<UsersResponse?> GetUsersAsync(string parameter);
+    Task<UsersResponse?> GetUsersAsync(GetUsersOptions options);
 }
