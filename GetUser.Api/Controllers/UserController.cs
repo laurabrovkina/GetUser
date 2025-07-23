@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using GetUser.Api.Contracts;
+﻿using GetUser.Api.Contracts;
 using GetUser.Api.Models;
 using GetUser.Api.Services;
 using Microsoft.AspNetCore.Mvc;

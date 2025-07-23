@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "dff25681-af4d-4f9d-a13d-c27773ff42a1",
+		"name": "GetUser.Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7134213"
+	},
+	"item": [
+		{
+			"name": "https://localhost:5011/user/me",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5011/user/me",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5011",
+					"path": [
+						"user",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:5011/users",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5011/users?name=John",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5011",
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "John"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
