@@ -33,7 +33,9 @@ public class UserController : ControllerBase
     {
         var options = new GetUsersOptions
         {
-            Name = request.Name
+            Name = request.Name,
+            Page = request.Page,
+            PageSize = request.PageSize
         };
         var users = await _userService.GetAllAsync(options);
         return new ObjectResult(users)
