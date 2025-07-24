@@ -1,4 +1,5 @@
-﻿using GetUser.Api.Models;
+﻿using GetUser.Api.Contracts;
+using GetUser.Api.Models;
 
 namespace GetUser.Api.UserHttpClient;
 

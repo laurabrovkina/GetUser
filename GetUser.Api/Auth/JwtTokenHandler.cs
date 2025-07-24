@@ -1,5 +1,6 @@
 ﻿using System.Net.Http.Headers;
 using GetUser.Api.AuthClient;
+using GetUser.Api.Contracts;
 using GetUser.Api.Models;
 using GetUser.Api.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

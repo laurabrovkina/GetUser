@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace GetUser.Api.Models;
+namespace GetUser.Api.Contracts;
 
 public class UserLoginRequest
 {

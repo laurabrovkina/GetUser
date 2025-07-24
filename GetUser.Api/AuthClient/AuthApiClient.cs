@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Text.Json;
+using GetUser.Api.Contracts;
 using GetUser.Api.Models;
 using GetUser.Api.Options;
 using GetUser.Api.Utilities;
