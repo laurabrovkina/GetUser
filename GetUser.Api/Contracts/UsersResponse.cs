@@ -2,7 +2,7 @@
 
 namespace GetUser.Api.Contracts;
 
-public class UsersResponse
+public class UsersResponse : PagedResponse
 {
     public IEnumerable<User> Users { get; set; } = [];
 }

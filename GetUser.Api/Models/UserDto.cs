@@ -29,4 +29,7 @@ public class UserDto
     public string UserAgent { get; set; }
     public CryptoDto Crypto { get; set; }
     public string Role { get; set; }
+    public int Skip { get; set; }
+    public int Limit { get; set; }
+    public int Total { get; set; }
 }
