@@ -1,0 +1,15 @@
+﻿services:
+  user.api.scheduler:
+    image: user.api.scheduler
+    build:
+      context: .
+      dockerfile: User.Api.Scheduler/Dockerfile
+  
+  scheduler.db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=changeme
+      - POSTGRES_DB=scheduling
+    ports:
+      - '5432:5432'

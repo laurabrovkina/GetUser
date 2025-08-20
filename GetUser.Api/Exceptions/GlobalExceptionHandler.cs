@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using TickerQ.Utilities.Enums;
+using TickerQ.Utilities.Interfaces;
 
 namespace GetUser.Api.Exceptions;
 
-public class GlobalExceptionHandler : IExceptionHandler
+public class GlobalExceptionHandler : IExceptionHandler, ITickerExceptionHandler
 {
     private readonly IProblemDetailsService _problemDetailsService;
     private readonly ILogger<GlobalExceptionHandler> _logger;
@@ -36,5 +38,16 @@ public class GlobalExceptionHandler : IExceptionHandler
                 Detail = exception.Message
             }
         });
+    }
+
+    // todo: implement handlers
+    public Task HandleExceptionAsync(Exception exception, Guid tickerId, TickerType tickerType)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task HandleCanceledExceptionAsync(Exception exception, Guid tickerId, TickerType tickerType)
+    {
+        throw new NotImplementedException();
     }
 }
