@@ -33,14 +33,23 @@ public class UserController : ControllerBase
     
     [HttpGet]
     [Route("users")]
-    public async Task<IActionResult> GetAllUsers([FromQuery] GetUsersRequest request)
+    public async Task<IActionResult> GetAllUsers([FromQuery] GetUsersRequest? request = null)
     {
-        var options = new GetUsersOptions
+        if (HttpContext.Request.Query.Count == 0)
         {
-            Name = request.Name,
-            Page = request.Page,
-            PageSize = request.PageSize
-        };
+            request = null;
+        }
+        
+        GetUsersOptions? options = null;
+        if (request is not null)
+        {
+            options = new GetUsersOptions
+            {
+                Name = request.Name,
+                Page = request.Page ?? 1,
+                PageSize = request.PageSize ?? 10
+            };
+        }
         var users = await _userService.GetAllAsync(options);
         return Ok(users);
     }
@@ -62,6 +71,6 @@ public class UserController : ControllerBase
         }
         
         var user = await _userService.CreateUserAsync(userRequest);
-        return CreatedAtAction("GetUser", new { user.Id }, user);
+        return CreatedAtAction(nameof(GetUser), new { userId = user.Id }, user);
     }
 }

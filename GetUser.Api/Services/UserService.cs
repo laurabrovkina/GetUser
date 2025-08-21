@@ -49,7 +49,7 @@ public class UserService : IUserService
         var response = await _userClient.AddUserAsync(user);
         ArgumentNullException.ThrowIfNull(response);
         
-        var userDto = _mapper.MapToUserDto(user);
+        var userDto = _mapper.MapToUserDtoSkipSomeProperties(user);
         return userDto;
     }
 }

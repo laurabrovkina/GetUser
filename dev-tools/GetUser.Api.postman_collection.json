@@ -56,6 +56,118 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:5199/schedule",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"x\": 420,\r\n    \"y\": 69\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5199/schedule",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5199",
+					"path": [
+						"schedule"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:5011/users",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5011/users",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5011",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:5011/users (validation happens somehow)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"username\": \"emilys\",\r\n        \"email\": \"emily.johnson@x.dummyjson.com\",\r\n        \"firstName\": \"Emily\",\r\n        \"lastName\": \"Johnson\",\r\n        \"gender\": \"female\",\r\n        \"image\": \"https://dummyjson.com/icon/emilys/128\",\r\n        \"maidenName\": \"Smith\",\r\n        \"age\": 28,\r\n        \"phone\": \"+81 965-431-3024\",\r\n        \"birthDate\": \"1996-5-30\",\r\n        \"bloodGroup\": \"O-\",\r\n        \"height\": 193.24,\r\n        \"weight\": 63.16,\r\n        \"eyeColor\": \"Green\",\r\n        \"hair\": {\r\n            \"color\": \"Brown\",\r\n            \"type\": \"Curly\"\r\n        },\r\n        \"ip\": \"42.48.100.32\",\r\n        \"address\": {\r\n            \"address\": \"this\",\r\n            \"city\": \"Phoenix\",\r\n            \"state\": \"Mississippi\",\r\n            \"stateCode\": \"MS\",\r\n            \"postalCode\": 29112,\r\n            \"coordinates\": {\r\n                \"lat\": -77.16213,\r\n                \"lng\": -92.084824\r\n            },\r\n            \"country\": \"United States\"\r\n        },\r\n        \"macAddress\": \"47:fa:41:18:ec:eb\",\r\n        \"university\": \"University of Wisconsin--Madison\",\r\n        \"bank\": {\r\n            \"cardExpire\": \"03/26\",\r\n            \"cardNumber\": \"9289760655481815\",\r\n            \"cardType\": \"Elo\",\r\n            \"currency\": \"CNY\",\r\n            \"iban\": \"YPUXISOBI7TTHPK2BR3HAIXL\"\r\n        },\r\n        \"company\": {\r\n            \"department\": \"Engineering\",\r\n            \"name\": \"Dooley, Kozey and Cronin\",\r\n            \"title\": \"Sales Manager\",\r\n            \"address\": {\r\n                \"address\": \"this\",\r\n                \"city\": \"San Francisco\",\r\n                \"state\": \"Wisconsin\",\r\n                \"stateCode\": \"WI\",\r\n                \"postalCode\": 37657,\r\n                \"coordinates\": {\r\n                    \"lat\": 71.814525,\r\n                    \"lng\": -161.150263\r\n                },\r\n                \"country\": \"United States\"\r\n            }\r\n        },\r\n        \"ein\": \"977-175\",\r\n        \"ssn\": \"900-590-289\",\r\n        \"userAgent\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36\",\r\n        \"crypto\": {\r\n            \"coin\": \"Bitcoin\",\r\n            \"wallet\": \"0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a\",\r\n            \"network\": \"Ethereum (ERC20)\"\r\n        },\r\n        \"role\": \"admin\",\r\n        \"password\": \"123456\",\r\n        \"accessToken\": \"qwerty\",\r\n        \"refreshToken\": \"wertyu\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5011/users",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5011",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:5011/users (new user)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"username\": \"emili\",\r\n        \"email\": \"emili.john@x.dummyjson.com\",\r\n        \"firstName\": \"Emili\",\r\n        \"lastName\": \"John\",\r\n        \"gender\": \"female\",\r\n        \"image\": \"https://dummyjson.com/icon/emilys/128\",\r\n        \"maidenName\": \"Smith\",\r\n        \"age\": 28,\r\n        \"phone\": \"+81 965-431-3024\",\r\n        \"birthDate\": \"1996-5-30\",\r\n        \"bloodGroup\": \"O-\",\r\n        \"height\": 193.24,\r\n        \"weight\": 63.16,\r\n        \"eyeColor\": \"Green\",\r\n        \"hair\": {\r\n            \"color\": \"Brown\",\r\n            \"type\": \"Curly\"\r\n        },\r\n        \"ip\": \"42.48.100.32\",\r\n        \"address\": {\r\n            \"address\": \"this\",\r\n            \"city\": \"Phoenix\",\r\n            \"state\": \"Mississippi\",\r\n            \"stateCode\": \"MS\",\r\n            \"postalCode\": 29112,\r\n            \"coordinates\": {\r\n                \"lat\": -77.16213,\r\n                \"lng\": -92.084824\r\n            },\r\n            \"country\": \"United States\"\r\n        },\r\n        \"macAddress\": \"47:fa:41:18:ec:eb\",\r\n        \"university\": \"University of Wisconsin--Madison\",\r\n        \"bank\": {\r\n            \"cardExpire\": \"03/26\",\r\n            \"cardNumber\": \"9289760655481815\",\r\n            \"cardType\": \"Elo\",\r\n            \"currency\": \"CNY\",\r\n            \"iban\": \"YPUXISOBI7TTHPK2BR3HAIXL\"\r\n        },\r\n        \"company\": {\r\n            \"department\": \"Engineering\",\r\n            \"name\": \"Dooley, Kozey and Cronin\",\r\n            \"title\": \"Sales Manager\",\r\n            \"address\": {\r\n                \"address\": \"this\",\r\n                \"city\": \"San Francisco\",\r\n                \"state\": \"Wisconsin\",\r\n                \"stateCode\": \"WI\",\r\n                \"postalCode\": 37657,\r\n                \"coordinates\": {\r\n                    \"lat\": 71.814525,\r\n                    \"lng\": -161.150263\r\n                },\r\n                \"country\": \"United States\"\r\n            }\r\n        },\r\n        \"ein\": \"977-175\",\r\n        \"ssn\": \"900-590-289\",\r\n        \"userAgent\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36\",\r\n        \"crypto\": {\r\n            \"coin\": \"Bitcoin\",\r\n            \"wallet\": \"0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a\",\r\n            \"network\": \"Ethereum (ERC20)\"\r\n        },\r\n        \"role\": \"admin\",\r\n        \"password\": \"123456\",\r\n        \"accessToken\": \"qwerty\",\r\n        \"refreshToken\": \"wertyu\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5011/users",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5011",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

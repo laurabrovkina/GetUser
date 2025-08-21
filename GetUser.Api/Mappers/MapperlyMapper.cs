@@ -8,6 +8,13 @@ namespace GetUser.Api.Mappers;
 public partial class MapperlyMapper
 {
     public partial UserDto MapToUserDto(User user);
+    
+    [MapperIgnoreSource(nameof(User.Hair))]
+    [MapperIgnoreSource(nameof(User.Company))]
+    [MapperIgnoreSource(nameof(User.Address))]
+    [MapperIgnoreSource(nameof(User.Crypto))]
+    public partial UserDto MapToUserDtoSkipSomeProperties(User user);
+    
     public partial UserResponse MapToUserResponse(User user);
     
     public partial User MapCreateUserRequestToUser(CreateUserRequest user);
