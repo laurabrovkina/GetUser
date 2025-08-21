@@ -24,6 +24,7 @@ builder.Services.AddTickerQ(options =>
     options.AddDashboard(basePath: "/tickerq");
     options.AddDashboardBasicAuth();
 });
+builder.Services.AddProblemDetails();
 
 var app = builder.Build();
 
@@ -41,5 +42,6 @@ app.MapPost("/schedule", async (Point point, ICronTickerManager<CronTicker> tick
         RetryIntervals = [ 1,2,3 ]
     });
 });
+app.UseExceptionHandler();
 
 app.Run();
