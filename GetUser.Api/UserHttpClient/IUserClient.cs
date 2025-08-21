@@ -6,5 +6,7 @@ namespace GetUser.Api.UserHttpClient;
 public interface IUserClient
 {
     Task<User?> GetCurrentAuthUserAsync();
-    Task<UsersResponse?> GetUsersAsync(GetUsersOptions options);
+    Task<User?> GetUserAsync(int userId);
+    Task<UsersResponse?> GetUsersAsync(GetUsersOptions? options = null);
+    Task<User?> AddUserAsync(User request);
 }

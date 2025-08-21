@@ -17,18 +17,23 @@ public class UserController : ControllerBase
 
     [HttpGet]
     [Route("user/me")]
-    public async Task<ActionResult<UserDto>> GetCurrentUser()
+    public async Task<IActionResult> GetCurrentUser()
     {
-        var currentUser = await _userService.GetUserAsync();
-        return new ObjectResult(currentUser)
-        {
-            StatusCode = 200
-        };
+        var currentUser = await _userService.GetCurrentUserAsync();
+        return Ok(currentUser);
+    }
+    
+    [HttpGet]
+    [Route("user/{userId:int}")]
+    public async Task<IActionResult> GetUser([FromRoute] int userId)
+    {
+        var userDto = await _userService.GetUserAsync(userId);
+        return Ok(userDto);
     }
     
     [HttpGet]
     [Route("users")]
-    public async Task<ActionResult<IEnumerable<UserDto>>> GetAllUsers([FromQuery] GetUsersRequest request)
+    public async Task<IActionResult> GetAllUsers([FromQuery] GetUsersRequest request)
     {
         var options = new GetUsersOptions
         {
@@ -37,9 +42,26 @@ public class UserController : ControllerBase
             PageSize = request.PageSize
         };
         var users = await _userService.GetAllAsync(options);
-        return new ObjectResult(users)
+        return Ok(users);
+    }
+
+    [HttpPost]
+    [Route("users")]
+    public async Task<IActionResult> CreateUser(CreateUserRequest userRequest)
+    {
+        var existingUser = await _userService.GetAllAsync();
+        var matchingUser = existingUser?.FirstOrDefault(x => x.Username == userRequest.Username
+                                                             && x.Email == userRequest.Email
+                                                             && x.FirstName == userRequest.FirstName
+                                                             && x.LastName == userRequest.LastName
+                                                             && x.Age == userRequest.Age
+                                                             && x.Gender == userRequest.Gender);
+        if (matchingUser is not null)
         {
-            StatusCode = 200
-        };
+            throw new ApplicationException("User already exists");
+        }
+        
+        var user = await _userService.CreateUserAsync(userRequest);
+        return CreatedAtAction("GetUser", new { user.Id }, user);
     }
 }
